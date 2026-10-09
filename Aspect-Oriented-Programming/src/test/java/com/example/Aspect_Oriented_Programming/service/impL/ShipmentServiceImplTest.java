@@ -1,0 +1,22 @@
+package com.example.Aspect_Oriented_Programming.service.impL;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ShipmentServiceImplTest {
+    @Autowired
+    private ShipmentServiceImpl shipmentService;
+
+    @Test
+    void aopTestOrderPackage(){
+        shipmentService.orderPackage(4L);
+
+    }
+    @Test
+    void aopTestTrackPackage(){
+        shipmentService.trackPackage(4L);
+    }
+
+}
