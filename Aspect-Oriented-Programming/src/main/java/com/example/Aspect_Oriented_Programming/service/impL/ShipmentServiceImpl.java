@@ -1,6 +1,11 @@
 package com.example.Aspect_Oriented_Programming.service.impL;
 
-public class ShipmentServiceImpl {
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import com.example.Aspect_Oriented_Programming.service.ShipmentService;
+@Service
+@Slf4j
+public class ShipmentServiceImpl implements ShipmentService {
     @Override
 
     public String orderPackage(Long orderId) {
