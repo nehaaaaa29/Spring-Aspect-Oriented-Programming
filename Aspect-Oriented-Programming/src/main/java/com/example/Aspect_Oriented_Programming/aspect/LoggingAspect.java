@@ -11,9 +11,17 @@ import org.springframework.stereotype.Component;
 
 public class LoggingAspect {
 
-    @Before("execution(* com.codingshuttle.aopApp.services.impl.*.*(..))")
-    public void beforeOrderPackage(JoinPoint joinPoint) {
-        log.info("Before method call: {}", joinPoint.getSignature());
-    }
+   // @Before("execution(* orderPackage(..))")
+    //@Before("execution(* com.example.Aspect_Oriented_Programming.service.impL.ShipmentServiceImpl.*.orderPackage(..))")
+   @Before("execution(* com.example.Aspect_Oriented_Programming.service.impL.ShipmentServiceImpl.*.*(..))")
 
+   public void beforeOrderPackage(JoinPoint joinPoint) {
+        log.info("Before orderPackage called from LoggingAspect kind,{} ", joinPoint.getKind());
+       log.info("Before orderPackage called from LoggingAspect signature,{} ", joinPoint.getSignature());
+
+   }
+   @Before("within(com.example.Aspect_Oriented_Programming..*)")
+    public void beforeServiceImplCalls(){
+       log.info("Service Impl calls");
+   }
 }
