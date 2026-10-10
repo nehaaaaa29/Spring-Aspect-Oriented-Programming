@@ -16,7 +16,7 @@ public class LoggingAspect {
    @Before("execution(* com.example.Aspect_Oriented_Programming.service.impL.ShipmentServiceImpl.*.*(..))")
 
    public void beforeOrderPackage(JoinPoint joinPoint) {
-        log.info("Before orderPackage called from LoggingAspect kind,{} ", joinPoint.getKind());
+        log.info("Before orderPackage called from LoggingAspect kind, {} ", joinPoint.getKind());
        log.info("Before orderPackage called from LoggingAspect signature,{} ", joinPoint.getSignature());
 
    }
@@ -24,10 +24,10 @@ public class LoggingAspect {
     public void beforeServiceImplCalls(){
        log.info("Service Impl calls");
    }
-   @Before("@annotation(import org.springframework.transaction.annotation.Transactional)")
+   @Before("@annotation(com.example.Aspect_Oriented_Programming.aspect.MyLogging)")
 
       public void beforeTransactionalAnnotationCalls(){
-       log.info("Before Transaction method call");
+       log.info("Before My Logging Annotation method call");
 
    }
 
