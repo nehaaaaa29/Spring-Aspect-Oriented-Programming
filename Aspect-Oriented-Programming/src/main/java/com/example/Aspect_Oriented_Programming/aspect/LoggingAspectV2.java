@@ -2,10 +2,7 @@ package com.example.Aspect_Oriented_Programming.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Aspect
@@ -17,9 +14,11 @@ public class LoggingAspectV2 {
         log.info("Before advice method call ,{}",joinPoint.getSignature());
 
     }
-    @After("allServiceMethodsPointCut()")
+    //@After("allServiceMethodsPointCut()")
+    @AfterReturning("allServiceMethodsPointCut()")
+
     public void afterServiceMethodCalls(JoinPoint joinPoint){
-        log.info("After advice method call ,{}",joinPoint.getSignature());
+        log.info("AfterReturning advice method call ,{}",joinPoint.getSignature());
 
     }
     @Pointcut("execution(* com.example.Aspect_Oriented_Programming.service.*.*(..))")
