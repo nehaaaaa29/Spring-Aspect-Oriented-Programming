@@ -15,10 +15,11 @@ public class LoggingAspectV2 {
 
     }
     //@After("allServiceMethodsPointCut()")
-    @AfterReturning("allServiceMethodsPointCut()")
+    @AfterReturning(value = "allServiceMethodsPointCut()",returning = "returnObj")
 
-    public void afterServiceMethodCalls(JoinPoint joinPoint){
-        log.info("AfterReturning advice method call ,{}",joinPoint.getSignature());
+    public void afterServiceMethodCalls(JoinPoint joinPoint, Object returnObj){
+        log.info("After Returning advice method call ,{}",joinPoint.getSignature());
+        log.info("After returning return value ,{}",returnObj);
 
     }
     @Pointcut("execution(* com.example.Aspect_Oriented_Programming.service.*.*(..))")
