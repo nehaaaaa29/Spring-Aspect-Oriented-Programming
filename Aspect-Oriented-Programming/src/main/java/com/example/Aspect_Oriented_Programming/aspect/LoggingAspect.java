@@ -24,4 +24,12 @@ public class LoggingAspect {
     public void beforeServiceImplCalls(){
        log.info("Service Impl calls");
    }
+   @Before("@annotation(import org.springframework.transaction.annotation.Transactional)")
+
+      public void beforeTransactionalAnnotationCalls(){
+       log.info("Before Transaction method call");
+
+   }
+
+
 }

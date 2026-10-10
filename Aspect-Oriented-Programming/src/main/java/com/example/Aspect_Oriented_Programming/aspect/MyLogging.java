@@ -1,4 +1,8 @@
 package com.example.Aspect_Oriented_Programming.aspect;
 
-public class MyLogging {
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MyLogging {
 }
