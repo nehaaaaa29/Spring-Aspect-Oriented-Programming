@@ -2,6 +2,7 @@ package com.example.Aspect_Oriented_Programming.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,20 @@ public class LoggingAspectV2 {
 
 
     }
+    @Around("allServiceMethodsPointCut()")
+    public Object logExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
+
+        Long starTime =System.currentTimeMillis();
+         Object returnedValue= proceedingJoinPoint.proceed();
+         Long endTime=System.currentTimeMillis();
+         Long diff=endTime-starTime;
+         log.info("Time taken for {} is {} ",proceedingJoinPoint.getSignature(),diff);
+          return returnedValue;
+
+    }
+
+
+
     @Pointcut("execution(* com.example.Aspect_Oriented_Programming.service.*.*(..))")
     public void allServiceMethodsPointCut(){
 
